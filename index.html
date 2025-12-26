@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodiversity in Neotropical Landscape Lab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%234caf50" width="1200" height="600"/><circle fill="%232e7d32" cx="200" cy="150" r="80" opacity="0.3"/><circle fill="%231b5e20" cx="800" cy="400" r="120" opacity="0.3"/><circle fill="%2366bb6a" cx="1000" cy="200" r="60" opacity="0.3"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            color: #2e7d32;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background: #1b5e20;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">BPN Lab</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Principal/Home</a></li>
+                    <li><a href="#about">Quiénes somos</a></li>
+                    <li><a href="#publications">Publicaciones</a></li>
+                    <li><a href="#outreach">Divulgación</a></li>
+                    <li><a href="#projects">Proyectos</a></li>
+                    <li><a href="#teaching">Cursos</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Biodiversity in Neotropical Landscape Lab</h1>
+        <p>
+            <strong>Español:</strong> Buscamos reducir la brecha entre las necesidades de USAR y CONSERVAR al recurso natural con investigación científica sobre los factores que modulan a la diversidad biológica en escala de paisaje, con énfasis en mosaicos ambientales neotropicales con alta demanda antrópica.
+        </p>
+        <p>
+            <strong>English:</strong> We seek to reduce the gap between the need to USE and CONSERVE natural resources with scientific research on the factors that modulate biological diversity at the landscape scale, emphasising neotropical environmental mosaics with high anthropogenic demand.
+        </p>
+    </section>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card" onclick="location.href='#about'">
+                <div class="card-image">👥</div>
+                <div class="card-content">
+                    <h3>¿Quiénes somos? / Who are we?</h3>
+                    <p>Conoce a nuestro equipo de investigación y colaboradores.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="location.href='#publications'">
+                <div class="card-image">📚</div>
+                <div class="card-content">
+                    <h3>Publicaciones / Papers</h3>
+                    <p>Nuestras contribuciones científicas y publicaciones académicas.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="location.href='#outreach'">
+                <div class="card-image">🌍</div>
+                <div class="card-content">
+                    <h3>Divulgación / Sciences & People</h3>
+                    <p>Acercando la ciencia a la sociedad.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="location.href='#projects'">
+                <div class="card-image">🔬</div>
+                <div class="card-content">
+                    <h3>Proyectos / Grants</h3>
+                    <p>Proyectos de investigación actuales y financiamiento.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="location.href='#teaching'">
+                <div class="card-image">🎓</div>
+                <div class="card-content">
+                    <h3>Cursos / Teaching</h3>
+                    <p>Programas educativos y oportunidades de formación.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="location.href='#faq'">
+                <div class="card-image">❓</div>
+                <div class="card-content">
+                    <h3>Preguntas frecuentes / FAQ</h3>
+                    <p>Respuestas a las preguntas más comunes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Programa Investigadores por México - SECIHTI (No. 673; 2017 - 2027)</p>
+        <p>INECOL Centro Regional del Bajío</p>
+        <p>Contacto: <a href="mailto:lbpn.inecol@gmail.com" style="color: #81c784;">lbpn.inecol@gmail.com</a></p>
+        
+        <div class="social-links">
+            <a href="https://x.com/bpnlab" target="_blank">Twitter/X</a>
+            <a href="https://www.facebook.com/profile.php?id=61563594892533" target="_blank">Facebook</a>
+        </div>
+    </footer>
+</body>
+</html>
