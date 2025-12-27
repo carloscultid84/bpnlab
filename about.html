@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes somos - BPN Lab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            color: #2e7d32;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #4caf50;
+            padding-bottom: 0.5rem;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .director-section {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .director-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .director-photo {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .director-info h3 {
+            color: #1b5e20;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .director-info .title {
+            color: #2e7d32;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .director-info .credentials {
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #4caf50;
+        }
+
+        .director-info .credentials strong {
+            color: #2e7d32;
+        }
+
+        .research-interests {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        .research-interests h4 {
+            color: #2e7d32;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-interests ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .research-interests li {
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            background: #2e7d32;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .contact-links a:hover {
+            background: #1b5e20;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .member-photo {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-info h3 {
+            color: #2e7d32;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .member-info .role {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .member-info p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #4caf50;
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .value-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            font-size: 0.95rem;
+            color: #666;
+            text-align: center;
+        }
+
+        footer {
+            background: #1b5e20;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .director-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .director-photo {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo"><a href="index.html">BPN Lab</a></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Principal/Home</a></li>
+                    <li><a href="about.html">Quiénes somos</a></li>
+                    <li><a href="publications.html">Publicaciones</a></li>
+                    <li><a href="outreach.html">Divulgación</a></li>
+                    <li><a href="projects.html">Proyectos</a></li>
+                    <li><a href="teaching.html">Cursos</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1>¿Quiénes somos? / Who are we?</h1>
+        <p>Conoce a nuestro equipo de investigación</p>
+    </div>
+
+    <div class="container">
+        <!-- Director del Laboratorio -->
+        <div class="director-section">
+            <div class="director-grid">
+                <div class="director-photo">👨‍🔬</div>
+                <div class="director-info">
+                    <h3>Dr. Carlos Andrés Cultid Medina</h3>
+                    <span class="title">Director del Laboratorio BPN-Lab</span>
+                    
+                    <div class="credentials">
+                        <p><strong>🎓 Formación:</strong> Doctor en Ciencias - Biología, Universidad del Valle</p>
+                        <p><strong>🏛️ Afiliación:</strong> Investigador por México, CONAHCYT</p>
+                        <p><strong>📊 SNII:</strong> Nivel I</p>
+                        <p><strong>📍 Ubicación:</strong> INECOL Centro Regional del Bajío, Pátzcuaro, Michoacán</p>
+                    </div>
+
+                    <div class="research-interests">
+                        <h4>🔬 Áreas de Investigación / Research Areas</h4>
+                        <p>Mi trabajo de investigación se enfoca en entender los procesos ecológicos que modulan la diversidad biológica en paisajes tropicales con alta demanda antrópica.</p>
+                        
+                        <ul>
+                            <li><strong>Ecología de organismos indicadores</strong> de perturbación antrópica</li>
+                            <li><strong>Ecología de insectos</strong> (especialmente escarabajos coprófagos)</li>
+                            <li><strong>Procesos ecosistémicos:</strong> polinización, dispersión de semillas, flujo de energía en la interfase agua-suelo</li>
+                            <li><strong>Biodiversidad y modelación estadística</strong> de datos ecológicos</li>
+                            <li><strong>Métodos de medición y estimación</strong> de diversidad biológica a través de diferentes escalas</li>
+                        </ul>
+                    </div>
+
+                    <div class="contact-links">
+                        <a href="mailto:carlos.cultid@inecol.mx">📧 Email</a>
+                        <a href="tel:+524341179521">📞 Tel: 434 117 95 21 ext. 211</a>
+                        <a href="https://www.researchgate.net/profile/Carlos-Cultid-Medina" target="_blank">ResearchGate</a>
+                        <a href="https://perfiles.inecol.mx/index.php/home/occidente-mexicano/carlos-andres-cultid-medina" target="_blank">Perfil INECOL</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Misión y Visión -->
+        <section class="section">
+            <h2>Nuestra Misión / Our Mission</h2>
+            <p>
+                El Laboratorio de Biodiversidad en Paisajes Neotropicales (BPN-Lab) está dedicado a generar conocimiento 
+                científico de alta calidad que contribuya a la conservación y uso sustentable de los recursos naturales 
+                en América Latina. Buscamos reducir la brecha entre las necesidades de USAR y CONSERVAR el recurso natural 
+                mediante investigación rigurosa sobre los factores que modulan la diversidad biológica en escala de paisaje, 
+                con énfasis en mosaicos ambientales neotropicales con alta demanda antrópica.
+            </p>
+            <p>
+                The Biodiversity in Neotropical Landscapes Laboratory (BPN-Lab) is dedicated to generating high-quality 
+                scientific knowledge that contributes to the conservation and sustainable use of natural resources in 
+                Latin America. We seek to bridge the gap between the need to USE and CONSERVE natural resources through 
+                rigorous research on the factors that modulate biological diversity at the landscape scale, emphasizing 
+                neotropical environmental mosaics with high anthropogenic demand.
+            </p>
+        </section>
+
+        <!-- Valores -->
+        <section class="section">
+            <h2>Nuestros Valores / Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="icon">🔬</div>
+                    <h3>Rigor Científico</h3>
+                    <p>Compromiso con métodos robustos y análisis estadísticos avanzados</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🤝</div>
+                    <h3>Colaboración Internacional</h3>
+                    <p>Redes de investigación en Latinoamérica, EE.UU. y Europa</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🌱</div>
+                    <h3>Paisajes Sustentables</h3>
+                    <p>Balance entre biodiversidad y necesidades humanas</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">📚</div>
+                    <h3>Formación</h3>
+                    <p>Capacitación de estudiantes de licenciatura, maestría y doctorado</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🔍</div>
+                    <h3>Organismos Indicadores</h3>
+                    <p>Uso de bioindicadores para monitoreo ambiental</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">📊</div>
+                    <h3>Modelación Estadística</h3>
+                    <p>Desarrollo e implementación de métodos cuantitativos innovadores</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Equipo -->
+        <section class="section">
+            <h2>Nuestro Equipo / Our Team</h2>
+            <p style="text-align: center; font-style: italic; margin-bottom: 2rem;">
+                [Esta sección puede ser actualizada con información de estudiantes, postdocs y colaboradores actuales del laboratorio]
+            </p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">🎓</div>
+                    <div class="member-info">
+                        <h3>Estudiantes de Doctorado</h3>
+                        <span class="role">Doctoral Students</span>
+                        <p>
+                            Estudiantes trabajando en tesis relacionadas con biodiversidad, 
+                            ecología de paisajes y conservación en ecosistemas neotropicales.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-photo">🎓</div>
+                    <div class="member-info">
+                        <h3>Estudiantes de Maestría</h3>
+                        <span class="role">Master's Students</span>
+                        <p>
+                            Proyectos enfocados en ecología de insectos, polinización y 
+                            modelación de diversidad biológica.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-photo">🔬</div>
+                    <div class="member-info">
+                        <h3>Técnicos de Campo</h3>
+                        <span class="role">Field Technicians</span>
+                        <p>
+                            Apoyo en recolección de datos, mantenimiento de equipos y 
+                            procesamiento de muestras biológicas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-photo">📊</div>
+                    <div class="member-info">
+                        <h3>Asistentes de Investigación</h3>
+                        <span class="role">Research Assistants</span>
+                        <p>
+                            Análisis de datos, revisión de literatura y apoyo en proyectos 
+                            de investigación del laboratorio.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Colaboradores -->
+        <section class="section">
+            <h2>Colaboradores y Redes / Collaborators & Networks</h2>
+            <p>
+                El BPN-Lab mantiene colaboraciones activas con instituciones y investigadores en múltiples países:
+            </p>
+            <ul style="margin-left: 2rem; margin-top: 1rem;">
+                <li><strong>Colombia:</strong> Universidad del Valle, Universidad de Caldas, Universidad del Tolima</li>
+                <li><strong>Estados Unidos:</strong> Wildlife Conservation Society, North Carolina State University</li>
+                <li><strong>México:</strong> Red de Diversidad Biológica del Occidente Mexicano (INECOL)</li>
+                <li><strong>Redes Internacionales:</strong> Colaboraciones en investigación sobre paisajes funcionales sustentables</li>
+            </ul>
+        </section>
+
+        <!-- Experiencia Previa -->
+        <section class="section">
+            <h2>Trayectoria / Background</h2>
+            <p>
+                <strong>Responsable del Laboratorio BPN-Lab</strong> desde 2018 en INECOL Centro Regional del Bajío.
+            </p>
+            <p>
+                <strong>Research Associate</strong> en Wildlife Conservation Society (2007-2016), trabajando en conservación 
+                y manejo de paisajes en los Andes colombianos.
+            </p>
+            <p>
+                El laboratorio ha producido más de 60 publicaciones científicas en revistas internacionales de alto impacto, 
+                abordando temas de biodiversidad, ecología funcional, conservación y uso sustentable de recursos naturales 
+                en paisajes neotropicales.
+            </p>
+        </section>
+
+        <!-- Afiliaciones -->
+        <section class="section">
+            <h2>Afiliaciones Institucionales / Institutional Affiliations</h2>
+            <div style="background: #f5f5f5; padding: 2rem; border-radius: 8px; border-left: 4px solid #4caf50;">
+                <p>
+                    <strong>📍 INECOL - Instituto de Ecología, A.C.</strong><br>
+                    Centro Regional del Bajío, Pátzcuaro, Michoacán, México
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>🏆 Programa Investigadores por México</strong><br>
+                    CONAHCYT (Anteriormente CONACYT) - SECIHTI<br>
+                    Proyecto No. 673 (2017 - 2027)
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>🌐 Red de Diversidad Biológica del Occidente Mexicano</strong><br>
+                    INECOL A.C.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Programa Investigadores por México - SECIHTI (No. 673; 2017 - 2027)</p>
+        <p>INECOL Centro Regional del Bajío</p>
+        <p>Contacto: <a href="mailto:lbpn.inecol@gmail.com" style="color: #81c784;">lbpn.inecol@gmail.com</a></p>
+        
+        <div class="social-links">
+            <a href="https://x.com/bpnlab" target="_blank">Twitter/X</a>
+            <a href="https://www.facebook.com/profile.php?id=61563594892533" target="_blank">Facebook</a>
+        </div>
+    </footer>
+</body>
+</html>
